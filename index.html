@@ -1,0 +1,101 @@
+<html>
+    <head>
+        <title>AIM</title>
+        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        <script
+          src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.min.js"></script>
+        <script src="https://unpkg.com/aframe-physics-extras@0.1.2/dist/aframe-physics-extras.min.js"></script>
+        <script src="https://recast-api.donmccurdy.com/aframe-inspector-plugin-recast.js"></script>
+        <script src="https://unpkg.com/aframe-environment-component@1.1.0/dist/aframe-environment-component.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.0.1/dist/aframe-extras.min.js"></script>
+
+
+
+        <script src="./shoot.js"></script>
+        <script src="./ball.js"></script>
+        <script src="./game.js"></script>
+
+
+    </head>
+    <body>
+        <a-scene id="scene" inspector-plugin-recast>
+
+            <!--assets-->
+            <a-assets>
+              <a-asset-item id="gun" src="./shooter/gun.gltf"></a-asset-item>
+            </a-assets>
+
+            <a-entity light="type: ambient; color: yellow; intensity:0.5"></a-entity>
+
+            <!--Camera and Cursor-->
+      <a-entity
+      id="camera"
+      camera
+      position="10 5.047 0"
+      wasd-controls="acceleration:2000;"
+      look-controls="pointerLockEnabled: true"        
+    >
+      <a-entity
+          id="weapon"
+          gltf-model="#gun"
+          position="0 -4.4 3"
+          rotation="0 180 0"
+          scale="0.35 1 1" 
+        >
+      </a-entity>
+      <a-cursor></a-cursor>
+      
+      <a-entity id="bullet" bullets game-play ></a-entity>
+
+      <a-entity  boxes></a-entity>
+
+      <a-entity id="header" position="0 1.6 -10">
+        <!-- Title -->
+        <a-entity
+          position="-29 13 -10"
+          text="font: exo2bold; align: center; width: 40; color: black; value: AIMLAB"
+        ></a-entity>
+
+        <!-- Timer -->
+        <a-entity position="-25 10 -10">
+          <a-entity
+            position="-12.5 5.89 -10"
+            text="font: aileronsemibold; width: 15; color: black; value: TIME\nREMAINING"
+          ></a-entity>
+          <a-entity
+            id="timer"
+            position="-22 6 -10"
+            text="font: exo2bold; align: center; width: 30; color: black; value: 00:00"
+          ></a-entity>
+        </a-entity>
+        <a-entity position = "-25 10 -10">
+        <a-entity position = "-4.5 5.89 -10" text="font: aileronsemibold; width: 15; color: black; value: targets \nshoted"></a-entity>
+        <a-entity id="targets" position = "-13 6 -10" text= "font: exo2bold; align: center; width: 30; color: black; value: 0"></a-entity>
+        </a-entity>
+        <a-entity position = "25 10 -10">
+        <a-entity position = "23 3.89 0 "text="font: aileronsemibold; width: 40; color: black; value: Score"></a-entity>
+        <a-entity id="Score" position = "23 7 -10" text= "font: exo2bold; align: center; width: 35; color: black; value: 0"></a-entity>
+        </a-entity>
+        <a-entity id = "game_over_text" position="0 1.6 -10" text="font: exo2bold; align: center; width: 100; color: white; value: Game Over" visible="false"></a-entity>
+      </a-entity>
+
+      
+
+    </a-entity>
+
+    <a-box position="7.5 10.333 -90" height="100" width="100"></a-box>
+
+    <a-box position="57.5 10.333 -40" rotation="0 90 0" height="100" width="100"></a-box>
+    <a-box position="-42.5 10.333 -40" rotation="0 -90 0" height="100" width="100"></a-box>
+    <a-box position="7.5 50.333 -40" rotation="90 0 0" height="100" width="100"></a-box>
+    <a-box position="7.5 -39.777 -40" rotation="-90 0 0"height="100" width="100"></a-box>
+
+    <a-box position="7.5 0 0" rotation="0 90 0" width="10" depth="25" color="#000000"></a-box>
+
+            
+
+    
+
+        </a-scene>
+    </body>
+</html>
